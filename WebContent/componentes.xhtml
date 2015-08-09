@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Componentes JSF 2</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:inputHidden value="#{cursoMB.curso.id}" id="id" />
+
+		<h:panelGrid columns="2">
+
+			<h:outputLabel value="Nome do curso:" for="nome" />
+			<h:inputText value="#{cursoMB.curso.nome}" id="nome" />
+
+			<h:outputLabel value="Nome do curso hidden:" for="nomeCurso" />
+			<h:inputText value="Matemática" id="nomeCurso" readonly="true" />
+
+			<h:outputLabel value="CEP Informado:" for="cep" />
+			<h:inputText value="#{cursoMB.curso.cep}" maxlength="10" id="cep" />
+
+			<h:outputLabel value="Ementa do Curso:" for="ementa" />
+			<h:inputTextarea value="#{cursoMB.curso.ementa}" id="ementa" />
+
+			<h:outputLabel value="Ementa do Curso informada:"
+				for="ementainformada" />
+			<h:inputTextarea
+				value="Fundamentos da Matemática aplicada à lógica de programação"
+				id="ementainformada" cols="100" rows="5" />
+
+			<h:outputLabel value="Senha:" for="senha" />
+			<h:inputSecret value="123xpto" id="senha" />
+
+			<h:outputLabel value="Aceito (Sim/Não):" for="aceito" />
+			<h:selectBooleanCheckbox value="#{cursoMB.curso.aceito}" id="aceito" />
+			
+			<h:outputLabel value="Diciplina" for="diciplina"/>
+			<h:selectManyCheckbox value="#{cursoMB.disciplinaSelecionada}" layout="pageDirection" id="diciplina">
+				<f:selectItems value="#{cursoMB.diciplinasAvaliadas}"/>
+			</h:selectManyCheckbox>
+
+			<h:outputLabel value="Turno do Curso:" for="turno"/>
+			<h:selectOneRadio value="#{cursoMB.turnoSelecionado}" id="turno">
+				<f:selectItems value="#{cursoMB.turnoAvaliados}"/>
+			</h:selectOneRadio>
+			
+			<h:outputLabel value="Sigla do Curso (Estático)" for="siglaEstatica" />
+			<h:selectOneMenu value="#{cursoMB.siglaDoCursoEscolhidoEstatico}"
+				id="siglaEstatica">
+				<f:selectItem itemValue="OOJ" itemLabel="Orientação a Objetos em Java" />
+				<f:selectItem itemValue="DWJ" itemLabel="Desenvolvimento WEB com JSF2 e JPA2" />
+				<f:selectItem itemValue="DWS" itemLabel="Desenvolvimento WEB com Servidor de Aplicação JBoss WildFly 8.2" />
+			</h:selectOneMenu>
+
+			<h:outputLabel value="Sigla do Curso (Dinâmico)" for="siglaDinamica" />
+			<h:selectOneMenu value="#{cursoMB.siglaDoCursoEscolhidoDinamicoList}" id="siglaDinamica">
+				<f:selectItems value="#{cursoMB.cursos.keySet()}" var="curso"
+					itemValue="#{curso}" itemLabel="#{curso}" />
+			</h:selectOneMenu>
+
+			<h:outputLabel value="Sigla do Curso (Dinâmico)" for="siglaDinamicaList" />
+			<h:selectOneMenu value="#{cursoMB.siglaDoCursoEscolhidoDinamicoMap}" id="siglaDinamicaList">
+				<f:selectItems value="#{cursoMB.cursosList}" var="cursoList"
+					itemValue="#{cursoList.sigla}" 
+					itemLabel="#{cursoList.nome}" />
+			</h:selectOneMenu>
+			
+			<h:outputLabel value="Turno do Curso (Dinâmico - LinkedHashSet)" for="turnoLHS" />
+			<h:selectOneListbox value="#{cursoMB.turnoSelecionadoHS}" id="turnoLHS">
+				<f:selectItems value="#{cursoMB.turnoAvaliadosHS}" />
+			</h:selectOneListbox>
+			
+			<h:outputLabel value="Cursos: (Dinâmico - LinkedHashSet)" />
+			<h:selectManyListbox value="#{cursoMB.selectManyCurso}">
+				<f:selectItems
+					value="#{cursoMB.selectManyCursos}"
+					var="curSet"
+					itemValue="#{curSet.sigla}"
+					itemLabel="#{curSet.nome}"
+				/>
+			</h:selectManyListbox>
+			
+			<h:outputLabel value="Grupos:" for="grupos"/>
+			<h:selectOneMenu value="#{cursoMB.groupCursoList}" id="grupos">
+				<f:selectItem value="#{null}" itemLabel="Selecione um curso"/>
+				<f:selectItems value="#{cursoMB.groupCurso}" var="cc"
+					itemLabel="#{cc.label}"
+					itemValue="#{cc.value}"
+				/>
+			</h:selectOneMenu>
+			
+			<h:commandButton action="result" value="Submit (commandButton)" />
+			<h:commandLink action="result" value="Submit (commandLink)" />
+		</h:panelGrid>
+		
+	</h:form>
+</h:body>
+</html>

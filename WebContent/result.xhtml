@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<h:head> <title>Exibe Valores</title></h:head>
+	<h:body>
+		<h:form>
+			<h1>Componentes JSF 2 - exemplos</h1>
+    		<h2>result.xhtml</h2>
+			<ol>
+				<li>Código do Curso (hidden) : #{cursoMB.curso.id}</li>
+				<li>Nome do Curso : #{cursoMB.curso.nome}</li>
+				<li>CEP: #{cursoMB.curso.cep}</li>
+				<li>Ementa: #{cursoMB.curso.ementa}</li>
+				<li>Aluno foi aceito no curso?: #{cursoMB.situacaoAluno}</li>
+				<li>Diciplinas: #{cursoMB.disciplinaSelecionada}</li>
+				<li>Turno: #{cursoMB.turnoSelecionado}</li>
+				<li>Sigla do Curso Estático: #{cursoMB.siglaDoCursoEscolhidoEstatico}</li>
+				<li>Sigla do Curso (List): #{cursoMB.siglaDoCursoEscolhidoDinamicoList}</li>
+				<li>Sigla do Curso (Map): #{cursoMB.siglaDoCursoEscolhidoDinamicoMap}</li>
+				<li>Turno (LinkedHashSet): #{cursoMB.turnoSelecionado}</li>
+				<li>Curso (LinkedHashSet): #{cursoMB.selectManyCurso}</li>
+				<li>Grupo de Cursos (SelectItemGroup): #{cursoMB.groupCursoList}</li>
+			</ol>
+			<h:button value="Retornar" outcome="componentes"/>
+		</h:form>
+	</h:body>
+</html>
